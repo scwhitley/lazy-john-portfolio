@@ -11,7 +11,6 @@ Plain HTML and CSS, no build step. Deploy the repo root as-is (Netlify, GitHub P
 | `/full/` | Multi-page site: Home, Music, Videos, Live, Shop, About | Full Website, from $300 |
 
 ## Still placeholder
-- Twitch URL (links go to twitch.tv until confirmed)
 - "My Music" and Lazy Academy shop links (`href="#"`)
 - Logo (an "LJ" monogram stands in), photos, song/video titles, schedule, Patreon tiers, shop items, stats
 - Booking forms show a thank-you message but don't send anything yet
