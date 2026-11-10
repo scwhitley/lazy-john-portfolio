@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live | Lazy John</title>
+  <meta name="description" content="Lazy John's Twitch stream schedule and Discord.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/full.css">
+  <style>
+    .player { aspect-ratio: 16/9; border-radius: 22px; background: linear-gradient(135deg, #3a1f6b, #1a1629 70%); border: 1px solid rgba(169,112,255,.4); display: grid; place-items: center; text-align: center; padding: 20px; }
+    .player > div > .ico { width: 54px; height: 54px; color: #c9a7ff; margin: 0 auto 14px; }
+    .player p { color: var(--muted); }
+    .week { display: grid; gap: 10px; grid-template-columns: repeat(7, 1fr); }
+    .day { padding: 16px 12px; border-radius: 16px; background: var(--night-2); border: 1px solid var(--line); min-height: 130px; }
+    .day b { display: block; font: 800 18px/1 var(--display); margin-bottom: 10px; }
+    .day small { color: var(--muted); }
+    .day.on { background: linear-gradient(160deg, rgba(145,70,255,.35), var(--night-2)); border-color: rgba(169,112,255,.5); }
+    .day.on small { color: var(--cream); }
+    .day .t { display: block; color: var(--mint); font-weight: 800; margin-top: 8px; }
+    @media (max-width: 860px) { .week { grid-template-columns: 1fr; } .day { min-height: 0; } }
+    .discord { display: grid; gap: 24px; grid-template-columns: 1fr auto; align-items: center; background: linear-gradient(135deg, rgba(88,101,242,.35), var(--night-2) 70%); }
+    .discord h3 { font-size: 30px; margin-bottom: 8px; }
+    .discord p { color: var(--muted); }
+    @media (max-width: 700px) { .discord { grid-template-columns: 1fr; } }
+
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Concept: Full website · <a href="../../">See all three concepts</a></div>
+
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="../"><span class="mono" aria-hidden="true">LJ</span>Lazy John</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <ul class="menu">
+          <li><a href="../">Home</a></li>
+          <li><a href="../music/">Music</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../live/" aria-current="page">Live</a></li>
+          <li><a href="../shop/">Shop</a></li>
+          <li><a href="../about/">About</a></li>
+      </ul>
+      <a class="btn btn-hot cta" href="../about/#contact">Work with me</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Live</p>
+        <h1>Pull up<br><span class="grad-text">a beanbag.</span></h1>
+        <p>Streams on Twitch with music, reactions and whatever chat decides.</p>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:10px">
+      <div class="wrap">
+        <div class="player">
+          <div><span class="ico i-twitch"></span><h3>Twitch player goes here</h3><p>Shows the live stream when John is on, and the last VOD when he's not.</p>
+          <p style="margin-top:18px"><a class="btn btn-hot" href="https://www.twitch.tv/"><span class="ico i-twitch"></span>Follow on Twitch</a></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow">Sample schedule</p>
+        <h2>This week on stream.</h2>
+        <div class="week">
+          <div class="day"><b>Mon</b><small>Nap day</small></div>
+          <div class="day on"><b>Tue</b><small>Fan submission reactions</small><span class=t>8 PM ET</span></div>
+          <div class="day"><b>Wed</b><small>Nap day</small></div>
+          <div class="day on"><b>Thu</b><small>Music night: writing live</small><span class=t>8 PM ET</span></div>
+          <div class="day"><b>Fri</b><small>Nap day</small></div>
+          <div class="day on"><b>Sat</b><small>Lazy Saturday hangout</small><span class=t>2 PM ET</span></div>
+          <div class="day"><b>Sun</b><small>Nap day</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <div class="card discord">
+          <div><h3>The lazy lounge on Discord</h3><p>Hang out between streams, send reaction requests and get pinged when John goes live.</p></div>
+          <a class="btn btn-hot" href="https://discord.gg/yuyG89Dpnd"><span class="ico i-discord"></span>Join the server</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div>
+        <span class="mono" aria-hidden="true">LJ</span>
+        <p class="big">Stay lazy.</p>
+        <p class="muted">Music, reactions and live streams from John Htun.</p>
+        <nav class="socials" aria-label="Socials">
+          <a href="https://www.youtube.com/@THISISLAZYJOHN" aria-label="YouTube"><span class="ico i-youtube"></span></a>
+          <a href="https://www.twitch.tv/" aria-label="Twitch"><span class="ico i-twitch"></span></a>
+          <a href="https://www.tiktok.com/@johnhtunn" aria-label="TikTok"><span class="ico i-tiktok"></span></a>
+          <a href="https://www.instagram.com/htuns_of_fun" aria-label="Instagram"><span class="ico i-instagram"></span></a>
+          <a href="https://discord.gg/yuyG89Dpnd" aria-label="Discord"><span class="ico i-discord"></span></a>
+        </nav>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../music/">Music</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../live/">Live</a></li>
+          <li><a href="../shop/">Lazy Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.patreon.com/c/lazyjohn">Patreon</a></li>
+          <li><a href="https://account.venmo.com/u/JohnHtun">Venmo tip jar</a></li>
+          <li><a href="https://discord.gg/yuyG89Dpnd">Discord</a></li>
+          <li><a href="../about/#contact">Business inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="credit">© Lazy John · Site by <a href="https://distortedbrands.com/web/">Distorted Web</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.querySelector(".site-nav"), btn = nav.querySelector(".menu-toggle");
+      btn.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open);
+      });
+    })();
+  </script>
+</body>
+</html>

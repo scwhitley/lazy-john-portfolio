@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lazy John | Music, reactions, live</title>
+  <meta name="description" content="Lazy John: musician, reactor and Twitch streamer.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/full.css">
+  <style>
+    .hero { padding: 80px 0 70px; position: relative; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; width: 900px; height: 900px; left: 50%; top: -520px; transform: translateX(-50%); border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,138,61,.35), rgba(255,111,174,.18) 40%, rgba(182,156,255,.08) 60%, transparent 72%); }
+    .hero .wrap { position: relative; text-align: center; }
+    .hero h1 { font-size: clamp(64px, 15vw, 190px); font-weight: 800; line-height: .85; margin: 22px 0; }
+    .hero p { color: var(--muted); font-size: 20px; max-width: 560px; margin: 0 auto; }
+    .hero .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 30px; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 720px; margin: 54px auto 0; }
+    .stats div { padding: 18px; border-radius: 16px; background: rgba(34,29,54,.7); border: 1px solid var(--line); }
+    .stats b { display: block; font: 800 30px/1 var(--display); }
+    .stats span { color: var(--muted); font-size: 13px; }
+    .feature { display: grid; gap: 30px; grid-template-columns: 1.3fr 1fr; align-items: center; }
+    .feature .thumb { border-radius: 22px; }
+    .feature h3 { font-size: 34px; margin: 10px 0 12px; }
+    .feature p { color: var(--muted); margin-bottom: 22px; }
+    .tiles { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .tile { min-height: 220px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; padding: 24px; border-radius: 22px; text-decoration: none; position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--night-2); transition: transform .2s; }
+    .tile:hover { transform: translateY(-4px); }
+    .tile .ico, .tile .em { position: absolute; top: 22px; left: 24px; width: 34px; height: 34px; font-size: 30px; line-height: 1; }
+    .tile h3 { font-size: 28px; }
+    .tile p { color: var(--muted); }
+    .tile.music { background: linear-gradient(160deg, rgba(255,138,61,.25), var(--night-2) 60%); }
+    .tile.stream { background: linear-gradient(160deg, rgba(145,70,255,.3), var(--night-2) 60%); }
+    .tile.shop { background: linear-gradient(160deg, rgba(111,240,196,.2), var(--night-2) 60%); }
+    @media (max-width: 760px) { .feature { grid-template-columns: 1fr; } .stats b { font-size: 22px; } }
+
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Concept: Full website · <a href="../">See all three concepts</a></div>
+
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="./"><span class="mono" aria-hidden="true">LJ</span>Lazy John</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <ul class="menu">
+          <li><a href="./" aria-current="page">Home</a></li>
+          <li><a href="./music/">Music</a></li>
+          <li><a href="./videos/">Videos</a></li>
+          <li><a href="./live/">Live</a></li>
+          <li><a href="./shop/">Shop</a></li>
+          <li><a href="./about/">About</a></li>
+      </ul>
+      <a class="btn btn-hot cta" href="./about/#contact">Work with me</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="live">Live on Twitch now</span>
+        <h1>LAZY<br><span class="grad-text">JOHN</span></h1>
+        <p>Musician, reactor and streamer. Making songs, losing it over new music and hanging out live with the couch crew.</p>
+        <div class="ctas">
+          <a class="btn btn-hot" href="music/"><span class="ico i-spotify"></span>Listen now</a>
+          <a class="btn" href="https://www.twitch.tv/"><span class="ico i-twitch"></span>Watch live</a>
+        </div>
+        <div class="stats" aria-label="Sample stats">
+          <div><b>00K</b><span>YouTube subs</span></div>
+          <div><b>00K</b><span>TikTok followers</span></div>
+          <div><b>3×</b><span>Streams a week</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="wrap feature">
+        <a class="vcard" href="https://www.youtube.com/@THISISLAZYJOHN"><div class="thumb"><span class="play"></span><span class="tag">Latest upload</span></div></a>
+        <div>
+          <p class="eyebrow">Latest reaction</p>
+          <h3>Sample: First time hearing this album</h3>
+          <p>Your newest YouTube upload shows here automatically, so the site is never out of date.</p>
+          <a class="btn btn-hot" href="https://www.youtube.com/@THISISLAZYJOHN?sub_confirmation=1"><span class="ico i-youtube"></span>Subscribe</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow">Pick your vibe</p>
+        <h2>Everything John does.</h2>
+        <div class="tiles">
+          <a class="tile music" href="music/"><span class="ico i-spotify"></span><h3>Music</h3><p>Singles, covers and what's coming next.</p></a>
+          <a class="tile" href="videos/"><span class="ico i-youtube"></span><h3>Reactions</h3><p>Every reaction, sorted by series.</p></a>
+          <a class="tile stream" href="live/"><span class="ico i-twitch"></span><h3>Live</h3><p>Stream schedule and the Discord.</p></a>
+          <a class="tile shop" href="shop/"><span class="em" aria-hidden="true">🛋️</span><h3>Lazy Academy</h3><p>Merch for professional relaxers.</p></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div>
+        <span class="mono" aria-hidden="true">LJ</span>
+        <p class="big">Stay lazy.</p>
+        <p class="muted">Music, reactions and live streams from John Htun.</p>
+        <nav class="socials" aria-label="Socials">
+          <a href="https://www.youtube.com/@THISISLAZYJOHN" aria-label="YouTube"><span class="ico i-youtube"></span></a>
+          <a href="https://www.twitch.tv/" aria-label="Twitch"><span class="ico i-twitch"></span></a>
+          <a href="https://www.tiktok.com/@johnhtunn" aria-label="TikTok"><span class="ico i-tiktok"></span></a>
+          <a href="https://www.instagram.com/htuns_of_fun" aria-label="Instagram"><span class="ico i-instagram"></span></a>
+          <a href="https://discord.gg/yuyG89Dpnd" aria-label="Discord"><span class="ico i-discord"></span></a>
+        </nav>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="./music/">Music</a></li>
+          <li><a href="./videos/">Videos</a></li>
+          <li><a href="./live/">Live</a></li>
+          <li><a href="./shop/">Lazy Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.patreon.com/c/lazyjohn">Patreon</a></li>
+          <li><a href="https://account.venmo.com/u/JohnHtun">Venmo tip jar</a></li>
+          <li><a href="https://discord.gg/yuyG89Dpnd">Discord</a></li>
+          <li><a href="./about/#contact">Business inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="credit">© Lazy John · Site by <a href="https://distortedbrands.com/web/">Distorted Web</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.querySelector(".site-nav"), btn = nav.querySelector(".menu-toggle");
+      btn.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open);
+      });
+    })();
+  </script>
+</body>
+</html>

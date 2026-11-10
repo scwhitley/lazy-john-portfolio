@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lazy John | Music, reactions, live</title>
+  <meta name="description" content="Lazy John makes music, reacts to everything, and streams on Twitch.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    body.modal-open { overflow: hidden; }
+    section { padding: 84px 0; }
+    .sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 30px; }
+    .sec-head h2 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; margin-top: 10px; }
+
+    /* Nav */
+    .nav { position: sticky; top: 0; z-index: 10; background: rgba(18,15,28,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .nav .wrap { display: flex; align-items: center; gap: 14px; height: 66px; }
+    .nav .mono { --s: 38px; }
+    .nav .name { font: 800 20px/1 var(--display); text-decoration: none; }
+    .nav ul { display: flex; gap: 22px; list-style: none; margin: 0 0 0 auto; padding: 0; }
+    .nav ul a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 15px; }
+    .nav ul a:hover { color: var(--cream); }
+    .nav .btn { padding: 10px 16px; font-size: 14px; }
+    @media (max-width: 760px) { .nav ul { display: none; } .nav .btn { margin-left: auto; } }
+
+    /* Hero */
+    .hero { padding: 70px 0 90px; position: relative; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; width: 760px; height: 760px; right: -220px; top: -260px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,138,61,.35), rgba(255,111,174,.18) 45%, transparent 70%); pointer-events: none;
+    }
+    .hero .wrap { position: relative; display: grid; gap: 40px; grid-template-columns: 1.25fr 1fr; align-items: center; }
+    .hero h1 { font-size: clamp(56px, 11vw, 132px); font-weight: 800; line-height: .9; margin: 16px 0 22px; }
+    .hero h1 em { font-style: normal; display: block; }
+    .hero p.lead { font-size: 19px; color: var(--muted); max-width: 470px; }
+    .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .hero .socials { margin-top: 26px; }
+    .portrait {
+      aspect-ratio: 4 / 5; border-radius: 28px; position: relative; overflow: hidden;
+      background: radial-gradient(90% 70% at 30% 20%, rgba(255,138,61,.75), transparent 60%), radial-gradient(90% 70% at 80% 90%, rgba(182,156,255,.7), transparent 60%), var(--card-2);
+      display: grid; place-items: center; transform: rotate(2deg);
+    }
+    .portrait span { font: 800 13px/1.4 var(--body); letter-spacing: .14em; text-transform: uppercase; color: rgba(247,239,227,.75); text-align: center; }
+    .sticker {
+      position: absolute; padding: 10px 14px; border-radius: 12px; font: 800 15px/1 var(--display); color: var(--night);
+      box-shadow: 0 8px 22px rgba(0,0,0,.35);
+    }
+    .sticker.a { background: var(--mint); left: -18px; top: 18%; transform: rotate(-8deg); }
+    .sticker.b { background: var(--cream); right: -12px; bottom: 14%; transform: rotate(6deg); }
+    .hero .art { position: relative; max-width: 420px; justify-self: center; width: 100%; }
+    @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .hero .art { max-width: 320px; } }
+
+    /* Marquee */
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); background: var(--night-2); }
+    .marquee div { display: flex; gap: 40px; width: max-content; padding: 16px 0; animation: slide 28s linear infinite; font: 800 22px/1 var(--display); }
+    .marquee b { color: var(--sun); }
+    @keyframes slide { to { transform: translateX(-50%); } }
+
+    /* Three pillars */
+    .pillars { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .pillar {
+      text-align: left; padding: 28px; border-radius: var(--radius); background: var(--night-2); border: 1px solid var(--line);
+      cursor: pointer; display: flex; flex-direction: column; gap: 12px; min-height: 250px; transition: transform .2s, border-color .2s;
+    }
+    .pillar:hover { transform: translateY(-4px); border-color: rgba(247,239,227,.35); }
+    .pillar .n { font: 800 64px/1 var(--display); }
+    .pillar h3 { font-size: 28px; }
+    .pillar p { color: var(--muted); }
+    .pillar .more { margin-top: auto; font-weight: 800; color: var(--mint); }
+    .pillar .more::after { content: " ↗"; }
+
+    /* Reactions grid */
+    .vids { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .vid { text-align: left; background: none; border: 0; padding: 0; cursor: pointer; }
+    .vid strong { display: block; margin-top: 12px; font-size: 16px; }
+    .vid small { color: var(--muted); }
+    .vid:hover .thumb { outline: 2px solid var(--cream); outline-offset: 3px; }
+
+    /* Live */
+    .live-band { border-radius: 28px; padding: clamp(28px, 5vw, 56px); background: linear-gradient(135deg, #3a1f6b, #1a1629 70%); border: 1px solid rgba(169,112,255,.4); display: grid; gap: 30px; grid-template-columns: 1fr auto; align-items: center; }
+    .live-band h2 { font-size: clamp(32px, 5vw, 52px); margin: 14px 0 10px; }
+    .live-band p { color: var(--muted); max-width: 520px; }
+    .days { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+    .days span { padding: 8px 12px; border-radius: 10px; background: rgba(247,239,227,.08); font-weight: 700; font-size: 14px; }
+    .days span.on { background: var(--mint); color: var(--night); }
+    .live-band .btns { display: grid; gap: 10px; }
+    @media (max-width: 760px) { .live-band { grid-template-columns: 1fr; } }
+
+    /* Support */
+    .support { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .sup { padding: 26px; border-radius: var(--radius); background: var(--night-2); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; }
+    .sup .ico, .sup .em { width: 30px; height: 30px; font-size: 28px; line-height: 1; }
+    .sup h3 { font-size: 24px; }
+    .sup p { color: var(--muted); }
+    .sup .btn { margin-top: auto; align-self: flex-start; }
+
+    /* Contact */
+    .contact { text-align: center; }
+    .contact h2 { font-size: clamp(40px, 8vw, 96px); font-weight: 800; line-height: .95; }
+    .contact p { color: var(--muted); max-width: 520px; margin: 18px auto 28px; font-size: 18px; }
+
+    /* Dialogs */
+    dialog {
+      width: min(620px, 100% - 32px); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--line); border-radius: 22px;
+      background: var(--night-2); color: var(--cream); overflow: auto;
+    }
+    dialog::backdrop { background: rgba(10,8,18,.72); backdrop-filter: blur(4px); }
+    dialog[open] { animation: pop .22s ease-out; }
+    @keyframes pop { from { transform: translateY(16px) scale(.98); opacity: 0; } }
+    .dlg-head { display: flex; align-items: center; gap: 12px; padding: 20px 22px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--night-2); z-index: 1; }
+    .dlg-head h3 { font-size: 24px; }
+    .x { margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--card); cursor: pointer; font-size: 20px; line-height: 1; }
+    .dlg-body { padding: 22px; display: grid; gap: 16px; }
+    .track { display: flex; align-items: center; gap: 14px; padding: 12px; border-radius: 14px; background: var(--card); }
+    .track .thumb { width: 56px; border-radius: 10px; flex: none; }
+    .track strong { display: block; }
+    .track small { color: var(--muted); }
+    .track .len { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .sched { width: 100%; border-collapse: collapse; }
+    .sched td { padding: 12px 6px; border-bottom: 1px solid var(--line); }
+    .sched td:last-child { text-align: right; color: var(--muted); }
+    .tier { padding: 16px; border-radius: 14px; background: var(--card); display: flex; gap: 14px; align-items: center; }
+    .tier b { font: 800 22px/1 var(--display); color: var(--sun); min-width: 54px; }
+    .tier small { color: var(--muted); display: block; }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 6px; font-weight: 700; font-size: 14px; }
+    input, select, textarea { font: inherit; color: var(--cream); background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+    textarea { min-height: 110px; resize: vertical; }
+    .row2 { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+    .sent { text-align: center; padding: 20px 0; }
+    .sent h4 { font-size: 28px; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Concept: One-page site with pop-ups · <a href="../">See all three concepts</a></div>
+
+  <nav class="nav">
+    <div class="wrap">
+      <span class="mono" aria-hidden="true">LJ</span>
+      <a class="name" href="#top">Lazy John</a>
+      <ul>
+        <li><a href="#what">What I do</a></li>
+        <li><a href="#reactions">Reactions</a></li>
+        <li><a href="#live">Live</a></li>
+        <li><a href="#support">Support</a></li>
+      </ul>
+      <button class="btn btn-hot" data-open="dlg-book">Work with me</button>
+    </div>
+  </nav>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap">
+        <div>
+          <span class="live">Live on Twitch now</span>
+          <h1><em>Lazy</em><em class="grad-text">John.</em></h1>
+          <p class="lead">Musician, professional reactor and part-time napper. New songs, loud reactions and late-night streams.</p>
+          <div class="ctas">
+            <button class="btn btn-hot" data-open="dlg-music"><span class="ico i-spotify"></span>Listen</button>
+            <a class="btn" href="#reactions"><span class="ico i-youtube"></span>Watch reactions</a>
+          </div>
+          <nav class="socials" aria-label="Socials">
+            <a href="https://www.youtube.com/@THISISLAZYJOHN" aria-label="YouTube"><span class="ico i-youtube"></span></a>
+            <a href="https://www.twitch.tv/" aria-label="Twitch"><span class="ico i-twitch"></span></a>
+            <a href="https://www.tiktok.com/@johnhtunn" aria-label="TikTok"><span class="ico i-tiktok"></span></a>
+            <a href="https://www.instagram.com/htuns_of_fun" aria-label="Instagram"><span class="ico i-instagram"></span></a>
+            <a href="https://discord.gg/yuyG89Dpnd" aria-label="Discord"><span class="ico i-discord"></span></a>
+          </nav>
+        </div>
+        <div class="art">
+          <div class="portrait"><span>Your photo<br>goes here</span></div>
+          <span class="sticker a">zzz…</span>
+          <span class="sticker b">htuns of fun</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="marquee" aria-hidden="true">
+      <div>
+        <span>New music</span><b>✦</b><span>Reactions</span><b>✦</b><span>Live on Twitch</span><b>✦</b><span>Lazy Academy</span><b>✦</b>
+        <span>New music</span><b>✦</b><span>Reactions</span><b>✦</b><span>Live on Twitch</span><b>✦</b><span>Lazy Academy</span><b>✦</b>
+      </div>
+    </div>
+
+    <section id="what">
+      <div class="wrap">
+        <div class="sec-head"><div><p class="eyebrow">What I do</p><h2>Three ways to hang out.</h2></div></div>
+        <div class="pillars">
+          <button class="pillar" data-open="dlg-music">
+            <span class="n grad-text">01</span><h3>Music</h3>
+            <p>Original songs and covers, written somewhere between a nap and a snack.</p>
+            <span class="more">Open the tracklist</span>
+          </button>
+          <button class="pillar" data-open="dlg-video" data-title="Latest reaction">
+            <span class="n grad-text">02</span><h3>Reactions</h3>
+            <p>First listens, viral clips and fan submissions, with zero chill.</p>
+            <span class="more">Watch the latest</span>
+          </button>
+          <button class="pillar" data-open="dlg-schedule">
+            <span class="n grad-text">03</span><h3>Live</h3>
+            <p>Streams on Twitch with chat picking the songs and the chaos.</p>
+            <span class="more">See the schedule</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="reactions" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head">
+          <div><p class="eyebrow">Latest on YouTube</p><h2>Fresh reactions.</h2></div>
+          <a class="btn" href="https://www.youtube.com/@THISISLAZYJOHN?sub_confirmation=1"><span class="ico i-youtube"></span>Subscribe</a>
+        </div>
+        <div class="vids">
+          <button class="vid" data-open="dlg-video" data-title="Sample: First time hearing this album">
+            <div class="thumb"><span class="play"></span><span class="tag">Reaction</span></div>
+            <strong>Sample: First time hearing this album</strong><small>Video title pulls from YouTube</small>
+          </button>
+          <button class="vid" data-open="dlg-video" data-title="Sample: Rating your fan submissions">
+            <div class="thumb alt"><span class="play"></span><span class="tag">Fan picks</span></div>
+            <strong>Sample: Rating your fan submissions</strong><small>Video title pulls from YouTube</small>
+          </button>
+          <button class="vid" data-open="dlg-video" data-title="Sample: Musician reacts to a viral cover">
+            <div class="thumb"><span class="play"></span><span class="tag">Music</span></div>
+            <strong>Sample: Musician reacts to a viral cover</strong><small>Video title pulls from YouTube</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="live" style="padding-top:0">
+      <div class="wrap">
+        <div class="live-band">
+          <div>
+            <span class="live">Live tonight</span>
+            <h2>Come chill on stream.</h2>
+            <p>Music, reactions and whatever chat throws at me. Bring snacks.</p>
+            <div class="days"><span>Mon</span><span class="on">Tue</span><span>Wed</span><span class="on">Thu</span><span>Fri</span><span class="on">Sat</span><span>Sun</span></div>
+          </div>
+          <div class="btns">
+            <a class="btn btn-hot" href="https://www.twitch.tv/"><span class="ico i-twitch"></span>Watch on Twitch</a>
+            <button class="btn" data-open="dlg-schedule">Full schedule</button>
+            <a class="btn btn-ghost" href="https://discord.gg/yuyG89Dpnd"><span class="ico i-discord"></span>Join the Discord</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="support" style="padding-top:0">
+      <div class="wrap">
+        <div class="sec-head"><div><p class="eyebrow">Support the couch</p><h2>Keep John (lazily) going.</h2></div></div>
+        <div class="support">
+          <div class="sup">
+            <span class="ico i-patreon"></span><h3>Patreon</h3>
+            <p>Early videos, behind-the-scenes and a say in what I react to next.</p>
+            <button class="btn btn-hot" data-open="dlg-support">See the tiers</button>
+          </div>
+          <div class="sup">
+            <span class="em" aria-hidden="true">🛋️</span><h3>Lazy Academy</h3>
+            <p>Merch for professional relaxers. Hoodies, tees and more.</p>
+            <a class="btn" href="#">Visit the shop</a>
+          </div>
+          <div class="sup">
+            <span class="em" aria-hidden="true">💸</span><h3>Tip jar</h3>
+            <p>Want to send a one-time thanks? Venmo goes straight to the snack fund.</p>
+            <a class="btn" href="https://account.venmo.com/u/JohnHtun">Tip on Venmo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="wrap">
+        <p class="eyebrow">Brands · collabs · shows</p>
+        <h2>Let's make<br><span class="grad-text">something.</span></h2>
+        <p>Sponsorships, collabs, song features or a live set. Send the details and I'll get back to you.</p>
+        <button class="btn btn-hot" data-open="dlg-book">Start a conversation</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="credit">© Lazy John · Site by <a href="https://distortedbrands.com/web/">Distorted Web</a></footer>
+
+  <!-- Pop-ups -->
+  <dialog id="dlg-music" aria-labelledby="t-music">
+    <div class="dlg-head"><span class="ico i-spotify"></span><h3 id="t-music">Tracklist</h3><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="dlg-body">
+      <div class="track"><div class="thumb cover"></div><div><strong>Sample single one</strong><small>Single · 2026</small></div><span class="len">3:12</span></div>
+      <div class="track"><div class="thumb cover alt"></div><div><strong>Sample single two</strong><small>Single · 2026</small></div><span class="len">2:48</span></div>
+      <div class="track"><div class="thumb cover"></div><div><strong>Sample cover song</strong><small>Cover · 2025</small></div><span class="len">3:35</span></div>
+      <p class="muted">A Spotify or Apple Music player can sit here so fans can listen without leaving the page.</p>
+      <a class="btn btn-hot" href="#"><span class="ico i-spotify"></span>Open in Spotify</a>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-video" aria-labelledby="t-video">
+    <div class="dlg-head"><span class="ico i-youtube"></span><h3 id="t-video" data-slot="title">Latest reaction</h3><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="dlg-body">
+      <div class="thumb"><span class="play"></span><span class="tag">YouTube player</span></div>
+      <p class="muted">The video plays right here. Fans stay on your site and can subscribe in one tap.</p>
+      <a class="btn btn-hot" href="https://www.youtube.com/@THISISLAZYJOHN?sub_confirmation=1"><span class="ico i-youtube"></span>Subscribe on YouTube</a>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-schedule" aria-labelledby="t-sched">
+    <div class="dlg-head"><span class="ico i-twitch"></span><h3 id="t-sched">Stream schedule</h3><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="dlg-body">
+      <table class="sched">
+        <tr><td><strong>Tuesday</strong></td><td>Fan submission reactions</td><td>8 PM ET</td></tr>
+        <tr><td><strong>Thursday</strong></td><td>Music night: writing live</td><td>8 PM ET</td></tr>
+        <tr><td><strong>Saturday</strong></td><td>Lazy Saturday hangout</td><td>2 PM ET</td></tr>
+      </table>
+      <p class="muted">Sample schedule. Times update to each visitor's time zone.</p>
+      <a class="btn btn-hot" href="https://www.twitch.tv/"><span class="ico i-twitch"></span>Follow on Twitch</a>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-support" aria-labelledby="t-sup">
+    <div class="dlg-head"><span class="ico i-patreon"></span><h3 id="t-sup">Patreon tiers</h3><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="dlg-body">
+      <div class="tier"><b>$3</b><div><strong>Couch Potato</strong><small>Discord role and my eternal gratitude</small></div></div>
+      <div class="tier"><b>$7</b><div><strong>Nap Club</strong><small>Early access to videos</small></div></div>
+      <div class="tier"><b>$15</b><div><strong>Lazy Academy Honors</strong><small>Pick a reaction each month</small></div></div>
+      <p class="muted">Sample tiers. These would match your real Patreon.</p>
+      <a class="btn btn-hot" href="https://www.patreon.com/c/lazyjohn"><span class="ico i-patreon"></span>Join on Patreon</a>
+    </div>
+  </dialog>
+
+  <dialog id="dlg-book" aria-labelledby="t-book">
+    <div class="dlg-head"><h3 id="t-book">Work with Lazy John</h3><button class="x" data-close aria-label="Close">×</button></div>
+    <div class="dlg-body">
+      <form data-mock>
+        <div class="row2">
+          <label>Name<input name="name" required autocomplete="name"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <label>What's it for?
+          <select name="type"><option>Brand sponsorship</option><option>Collab</option><option>Song feature</option><option>Live performance</option><option>Something else</option></select>
+        </label>
+        <label>Details<textarea name="details" placeholder="Tell me about the idea, dates and budget"></textarea></label>
+        <button class="btn btn-hot" type="submit">Send it</button>
+      </form>
+      <div class="sent" hidden><h4>Got it 🛋️</h4><p class="muted">Thanks! (This is a preview, so nothing was sent.)</p></div>
+    </div>
+  </dialog>
+
+  <script src="../assets/js/modal.js"></script>
+</body>
+</html>

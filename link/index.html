@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lazy John | Links</title>
+  <meta name="description" content="Lazy John: music, reactions and live streams. Every link in one place.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    body {
+      background:
+        radial-gradient(700px 420px at 50% -120px, rgba(255,138,61,.28), transparent 70%),
+        radial-gradient(600px 400px at 110% 40%, rgba(182,156,255,.16), transparent 70%),
+        radial-gradient(600px 400px at -10% 80%, rgba(255,111,174,.12), transparent 70%),
+        var(--night);
+      min-height: 100vh;
+    }
+    .page { width: min(520px, 100% - 32px); margin: 0 auto; padding: 48px 0 8px; position: relative; }
+
+    .zzz { position: absolute; top: 34px; right: 12%; font: 800 22px/1 var(--display); color: var(--lilac); opacity: .7; pointer-events: none; }
+    .zzz span { display: inline-block; animation: float 3s ease-in-out infinite; }
+    .zzz span:nth-child(2) { font-size: .8em; animation-delay: .4s; }
+    .zzz span:nth-child(3) { font-size: .6em; animation-delay: .8s; }
+    @keyframes float { 50% { transform: translateY(-8px); opacity: .4; } }
+
+    .head { text-align: center; }
+    .head .mono { --s: 104px; margin: 0 auto 18px; }
+    .head h1 { font-size: 40px; font-weight: 800; }
+    .head .handle { color: var(--muted); margin-top: 4px; font-size: 15px; }
+    .head .bio { margin: 14px auto 0; max-width: 380px; font-size: 16px; }
+    .head .socials { justify-content: center; margin-top: 18px; }
+
+    .livecard {
+      margin-top: 26px; display: flex; align-items: center; gap: 14px; padding: 14px 16px;
+      border-radius: var(--radius); text-decoration: none;
+      background: linear-gradient(135deg, rgba(145,70,255,.35), rgba(145,70,255,.12)); border: 1px solid rgba(169,112,255,.5);
+    }
+    .livecard .ico { width: 28px; height: 28px; color: #c9a7ff; }
+    .livecard strong { display: block; font-size: 16px; }
+    .livecard small { color: var(--muted); font-size: 13px; }
+    .livecard .live { margin-left: auto; }
+
+    .links { display: grid; gap: 12px; margin-top: 14px; }
+    .lnk {
+      display: flex; align-items: center; gap: 14px; padding: 16px 18px; min-height: 62px;
+      border-radius: var(--radius); background: rgba(34,29,54,.85); border: 1px solid var(--line);
+      text-decoration: none; font-weight: 700; font-size: 16px;
+      transition: transform .15s, background .15s, color .15s;
+    }
+    .lnk:hover { transform: translateY(-2px) scale(1.01); background: var(--cream); color: var(--night); }
+    .lnk .ico { width: 22px; height: 22px; }
+    .lnk .em { width: 22px; text-align: center; font-size: 20px; line-height: 1; }
+    .lnk .sub { margin-left: auto; font-weight: 500; font-size: 13px; color: var(--muted); }
+    .lnk:hover .sub { color: inherit; opacity: .7; }
+    .lnk.hot { background: var(--glow); color: var(--night); border-color: transparent; }
+    .lnk.hot .sub { color: var(--night); opacity: .7; }
+
+    .section-label { margin: 28px 4px 10px; }
+
+    .latest { display: block; text-decoration: none; border-radius: var(--radius); overflow: hidden; background: var(--card); border: 1px solid var(--line); }
+    .latest .thumb { border-radius: 0; }
+    .latest .meta { padding: 14px 16px; }
+    .latest .meta strong { display: block; font-size: 16px; }
+    .latest .meta small { color: var(--muted); }
+
+    .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .duo .lnk { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .duo .lnk .sub { margin-left: 0; }
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Concept: Link page · <a href="../">See all three concepts</a></div>
+
+  <main class="page">
+    <div class="zzz" aria-hidden="true"><span>z</span><span>z</span><span>z</span></div>
+
+    <header class="head">
+      <div class="mono" aria-hidden="true">LJ</div>
+      <h1>Lazy John</h1>
+      <p class="handle">@iamlazyjohn</p>
+      <p class="bio">Making music, reacting loud, streaming lazy. Pull up a beanbag.</p>
+      <nav class="socials" aria-label="Socials">
+        <a href="https://www.youtube.com/@THISISLAZYJOHN" aria-label="YouTube"><span class="ico i-youtube"></span></a>
+        <a href="https://www.twitch.tv/" aria-label="Twitch"><span class="ico i-twitch"></span></a>
+        <a href="https://www.tiktok.com/@johnhtunn" aria-label="TikTok"><span class="ico i-tiktok"></span></a>
+        <a href="https://www.instagram.com/htuns_of_fun" aria-label="Instagram"><span class="ico i-instagram"></span></a>
+        <a href="https://discord.gg/yuyG89Dpnd" aria-label="Discord"><span class="ico i-discord"></span></a>
+      </nav>
+    </header>
+
+    <a class="livecard" href="https://www.twitch.tv/">
+      <span class="ico i-twitch"></span>
+      <span><strong>Live on Twitch</strong><small>Reacting to your submissions</small></span>
+      <span class="live">Live</span>
+    </a>
+
+    <div class="links">
+      <a class="lnk hot" href="https://www.youtube.com/@THISISLAZYJOHN?sub_confirmation=1"><span class="ico i-youtube"></span>Subscribe on YouTube<span class="sub">Reactions</span></a>
+      <a class="lnk" href="#"><span class="ico i-spotify"></span>My Music<span class="sub">Stream it</span></a>
+      <a class="lnk" href="#"><span class="em" aria-hidden="true">🛋️</span>Lazy Academy Shop<span class="sub">Merch</span></a>
+    </div>
+
+    <p class="eyebrow section-label">Latest video</p>
+    <a class="latest" href="https://www.youtube.com/@THISISLAZYJOHN">
+      <div class="thumb"><span class="play"></span><span class="tag">New</span></div>
+      <div class="meta"><strong>Sample title: First time hearing this…</strong><small>YouTube · pulls in automatically</small></div>
+    </a>
+
+    <p class="eyebrow section-label">Hang out</p>
+    <div class="links">
+      <a class="lnk" href="https://discord.gg/yuyG89Dpnd"><span class="ico i-discord"></span>Join the Discord<span class="sub">The lazy lounge</span></a>
+      <a class="lnk" href="https://www.tiktok.com/@johnhtunn"><span class="ico i-tiktok"></span>TikTok<span class="sub">@johnhtunn</span></a>
+      <a class="lnk" href="https://www.instagram.com/htuns_of_fun"><span class="ico i-instagram"></span>Instagram<span class="sub">@htuns_of_fun</span></a>
+    </div>
+
+    <p class="eyebrow section-label">Support the couch</p>
+    <div class="duo">
+      <a class="lnk" href="https://www.patreon.com/c/lazyjohn"><span class="ico i-patreon"></span>Patreon<span class="sub">Early videos + perks</span></a>
+      <a class="lnk" href="https://account.venmo.com/u/JohnHtun"><span class="em" aria-hidden="true">💸</span>Tip on Venmo<span class="sub">Buy John a snack</span></a>
+    </div>
+  </main>
+
+  <footer class="credit">Site by <a href="https://distortedbrands.com/web/">Distorted Web</a></footer>
+</body>
+</html>

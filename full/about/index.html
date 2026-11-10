@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Lazy John</title>
+  <meta name="description" content="About Lazy John and business inquiries.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/full.css">
+  <style>
+    .bio { display: grid; gap: 40px; grid-template-columns: 1fr 1.2fr; align-items: start; }
+    .photo { aspect-ratio: 4/5; border-radius: 26px; display: grid; place-items: center; text-align: center;
+      background: radial-gradient(90% 70% at 30% 20%, rgba(255,138,61,.7), transparent 60%), radial-gradient(90% 70% at 80% 90%, rgba(182,156,255,.65), transparent 60%), var(--card-2); }
+    .photo span { font: 800 13px/1.4 var(--body); letter-spacing: .14em; text-transform: uppercase; color: rgba(247,239,227,.75); }
+    .bio p { color: var(--muted); font-size: 18px; margin-bottom: 16px; }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+    .facts div { padding: 16px; border-radius: 14px; background: var(--night-2); border: 1px solid var(--line); }
+    .facts b { display: block; font-family: var(--display); font-size: 18px; }
+    .facts span { color: var(--muted); font-size: 14px; }
+    .contact { display: grid; gap: 30px; grid-template-columns: 1fr 1.3fr; }
+    .contact .side p { color: var(--muted); margin-bottom: 14px; }
+    @media (max-width: 860px) { .bio, .contact { grid-template-columns: 1fr; } .photo { max-width: 360px; } }
+    .sent { text-align: center; padding: 30px 0; }
+    .sent h3 { font-size: 30px; margin-bottom: 8px; }
+
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Concept: Full website · <a href="../../">See all three concepts</a></div>
+
+  <header class="site-nav">
+    <div class="wrap">
+      <a class="brand" href="../"><span class="mono" aria-hidden="true">LJ</span>Lazy John</a>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false"><span></span></button>
+      <ul class="menu">
+          <li><a href="../">Home</a></li>
+          <li><a href="../music/">Music</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../live/">Live</a></li>
+          <li><a href="../shop/">Shop</a></li>
+          <li><a href="../about/" aria-current="page">About</a></li>
+      </ul>
+      <a class="btn btn-hot cta" href="../about/#contact">Work with me</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">About</p>
+        <h1>Hi, I'm<br><span class="grad-text">John.</span></h1>
+      </div>
+    </section>
+
+    <section class="block" style="padding-top:10px">
+      <div class="wrap bio">
+        <div class="photo"><span>Your photo<br>goes here</span></div>
+        <div>
+          <p>Sample bio: I'm John Htun, better known as Lazy John. I make music, react to just about everything, and stream on Twitch with the best (laziest) community online.</p>
+          <p>This is where your story goes: how you started, what you play, the moment a reaction blew up, and what's next.</p>
+          <div class="facts">
+            <div><b>Musician</b><span>Originals and covers</span></div>
+            <div><b>Reactor</b><span>YouTube and TikTok</span></div>
+            <div><b>Streamer</b><span>Live on Twitch</span></div>
+            <div><b>Founder</b><span>Lazy Academy</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="contact" style="padding-top:0">
+      <div class="wrap">
+        <p class="eyebrow">Business</p>
+        <h2>Work with Lazy John.</h2>
+        <div class="contact">
+          <div class="side">
+            <p>Sponsorships, collabs, features and live sets. Tell me what you have in mind.</p>
+            <p>A downloadable press kit with photos, logo and audience numbers can live here too.</p>
+            <a class="btn" href="#">Download press kit</a>
+          </div>
+          <div class="card">
+            <form class="inquiry" id="inq">
+              <div class="row2">
+                <label>Name<input name="name" required autocomplete="name"></label>
+                <label>Email<input name="email" type="email" required autocomplete="email"></label>
+              </div>
+              <div class="row2">
+                <label>Company or channel<input name="company"></label>
+                <label>Type
+                  <select name="type"><option>Brand sponsorship</option><option>Collab</option><option>Song feature</option><option>Live performance</option><option>Other</option></select>
+                </label>
+              </div>
+              <label>Details<textarea name="details" placeholder="The idea, dates and budget"></textarea></label>
+              <button class="btn btn-hot" type="submit">Send inquiry</button>
+            </form>
+            <div class="sent" hidden><h3>Got it 🛋️</h3><p class="muted">Thanks! (This is a preview, so nothing was sent.)</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      document.getElementById("inq").addEventListener("submit", function (e) {
+        e.preventDefault(); this.hidden = true; this.nextElementSibling.hidden = false;
+      });
+    </script>
+  </main>
+
+  <footer class="site-foot">
+    <div class="wrap">
+      <div>
+        <span class="mono" aria-hidden="true">LJ</span>
+        <p class="big">Stay lazy.</p>
+        <p class="muted">Music, reactions and live streams from John Htun.</p>
+        <nav class="socials" aria-label="Socials">
+          <a href="https://www.youtube.com/@THISISLAZYJOHN" aria-label="YouTube"><span class="ico i-youtube"></span></a>
+          <a href="https://www.twitch.tv/" aria-label="Twitch"><span class="ico i-twitch"></span></a>
+          <a href="https://www.tiktok.com/@johnhtunn" aria-label="TikTok"><span class="ico i-tiktok"></span></a>
+          <a href="https://www.instagram.com/htuns_of_fun" aria-label="Instagram"><span class="ico i-instagram"></span></a>
+          <a href="https://discord.gg/yuyG89Dpnd" aria-label="Discord"><span class="ico i-discord"></span></a>
+        </nav>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../music/">Music</a></li>
+          <li><a href="../videos/">Videos</a></li>
+          <li><a href="../live/">Live</a></li>
+          <li><a href="../shop/">Lazy Academy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <ul>
+          <li><a href="https://www.patreon.com/c/lazyjohn">Patreon</a></li>
+          <li><a href="https://account.venmo.com/u/JohnHtun">Venmo tip jar</a></li>
+          <li><a href="https://discord.gg/yuyG89Dpnd">Discord</a></li>
+          <li><a href="../about/#contact">Business inquiries</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="credit">© Lazy John · Site by <a href="https://distortedbrands.com/web/">Distorted Web</a></p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.querySelector(".site-nav"), btn = nav.querySelector(".menu-toggle");
+      btn.addEventListener("click", function () {
+        var open = nav.classList.toggle("open");
+        btn.setAttribute("aria-expanded", open);
+      });
+    })();
+  </script>
+</body>
+</html>

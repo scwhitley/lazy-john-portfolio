@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lazy John | Website concepts by Distorted Web</title>
+  <meta name="description" content="Three website concepts for Lazy John: a link page, a one-page site, and a full website.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <style>
+    .hero { padding: 72px 0 40px; text-align: center; }
+    .hero .mono { --s: 84px; margin: 0 auto 26px; }
+    .hero h1 { font-size: clamp(40px, 8vw, 84px); font-weight: 800; }
+    .hero p { max-width: 560px; margin: 18px auto 0; color: var(--muted); font-size: 18px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); padding-bottom: 40px; }
+    .opt {
+      display: flex; flex-direction: column; gap: 14px; padding: 26px; border-radius: var(--radius);
+      background: var(--night-2); border: 1px solid var(--line); text-decoration: none;
+      transition: transform .2s, border-color .2s;
+    }
+    .opt:hover { transform: translateY(-4px); border-color: rgba(247,239,227,.35); }
+    .opt .preview { height: 150px; border-radius: 12px; background: var(--card); position: relative; overflow: hidden; }
+    .opt h2 { font-size: 28px; }
+    .opt .price { font: 800 14px/1 var(--body); color: var(--mint); letter-spacing: .06em; text-transform: uppercase; }
+    .opt ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: 15px; }
+    .opt .go { margin-top: auto; font-weight: 800; }
+    .opt .go::after { content: " →"; }
+    /* tiny wireframes */
+    .wf-link { display: grid; gap: 7px; width: 46%; margin: 18px auto; }
+    .wf-link i { height: 14px; border-radius: 99px; background: var(--card-2); }
+    .wf-link i:first-child { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 4px; background: var(--glow); }
+    .wf-one { position: absolute; inset: 14px; display: grid; gap: 8px; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 46px 1fr; }
+    .wf-one i { border-radius: 8px; background: var(--card-2); }
+    .wf-one i:first-child { grid-column: 1 / -1; background: var(--glow); opacity: .85; }
+    .wf-one b { position: absolute; right: 18%; bottom: 10%; width: 44%; height: 58%; border-radius: 10px; background: var(--cream); box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+    .wf-full { position: absolute; inset: 14px; display: grid; gap: 8px; grid-template-rows: 12px 50px 1fr; }
+    .wf-full i { border-radius: 6px; background: var(--card-2); }
+    .wf-full > i:nth-child(2) { background: var(--glow); opacity: .85; }
+    .wf-full span { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .wf-full span i { height: 100%; }
+    .note { max-width: 680px; margin: 0 auto 30px; padding: 18px 22px; border-radius: 14px; border: 1px dashed var(--line); color: var(--muted); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="concept-bar">Website concepts for Lazy John, made by <a href="https://distortedbrands.com/web/">Distorted Web</a></div>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="mono" aria-hidden="true">LJ</div>
+      <p class="eyebrow">Music · Reactions · Live</p>
+      <h1>Three ways to put <span class="grad-text">Lazy John</span> online.</h1>
+      <p>Pick a size. Each one is clickable, uses your real links, and works on phones. Copy and images are placeholders until we swap in yours.</p>
+    </header>
+
+    <section class="grid" aria-label="Concepts">
+      <a class="opt" href="link/">
+        <div class="preview"><div class="wf-link"><i></i><i></i><i></i><i></i><i></i></div></div>
+        <span class="price">Link page · from $100</span>
+        <h2>Link page</h2>
+        <ul>
+          <li>Replaces Linktree with your own look</li>
+          <li>Live-on-Twitch banner and latest video</li>
+          <li>Every platform, shop and tip jar in one tap</li>
+        </ul>
+        <span class="go">Open the link page</span>
+      </a>
+
+      <a class="opt" href="one-page/">
+        <div class="preview"><div class="wf-one"><i></i><i></i><i></i><i></i><b></b></div></div>
+        <span class="price">One-pager · from $200</span>
+        <h2>One-page site</h2>
+        <ul>
+          <li>One scrolling page with music, reactions and stream sections</li>
+          <li>Pop-up windows for tracks, schedule, support and booking</li>
+          <li>Fast to update and easy to share</li>
+        </ul>
+        <span class="go">Open the one-pager</span>
+      </a>
+
+      <a class="opt" href="full/">
+        <div class="preview"><div class="wf-full"><i></i><i></i><span><i></i><i></i><i></i><i></i></span></div></div>
+        <span class="price">Full website · from $300</span>
+        <h2>Full website</h2>
+        <ul>
+          <li>Separate pages for Music, Videos, Live, Shop and About</li>
+          <li>Room for the Lazy Academy shop and press kit</li>
+          <li>Booking and collab inquiry form</li>
+        </ul>
+        <span class="go">Open the full site</span>
+      </a>
+    </section>
+
+    <p class="note">These are preview mockups. Song titles, video titles, schedule and shop items are sample content. Your Twitch, music and shop links will be added once you confirm them.</p>
+  </main>
+
+  <footer class="credit">Designed by <a href="https://distortedbrands.com/web/">Distorted Web</a> · Websites that cut through.</footer>
+</body>
+</html>

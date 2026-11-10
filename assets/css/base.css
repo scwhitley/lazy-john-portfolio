@@ -1,0 +1,159 @@
+/* Lazy John — shared styles for all three concepts */
+
+@font-face {
+  font-family: "Bricolage";
+  src: url("../fonts/bricolage.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "DM Sans";
+  src: url("../fonts/dmsans.woff2") format("woff2");
+  font-weight: 100 1000;
+  font-display: swap;
+}
+
+:root {
+  --night: #120f1c;
+  --night-2: #1a1629;
+  --card: #221d36;
+  --card-2: #2b2545;
+  --line: rgba(247, 239, 227, 0.12);
+  --cream: #f7efe3;
+  --muted: #b5adc7;
+  --sun: #ff8a3d;
+  --pink: #ff6fae;
+  --lilac: #b69cff;
+  --mint: #6ff0c4;
+  --glow: linear-gradient(135deg, var(--sun), var(--pink) 55%, var(--lilac));
+  --radius: 18px;
+  --display: "Bricolage", "Arial Black", system-ui, sans-serif;
+  --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--cream);
+  font: 400 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.05; margin: 0; letter-spacing: -0.02em; }
+p { margin: 0; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+.grad-text { background: var(--glow); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.eyebrow {
+  font: 700 12px/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mint);
+}
+.muted { color: var(--muted); }
+
+/* Monogram badge used in place of a logo */
+.mono {
+  --s: 56px;
+  width: var(--s); height: var(--s); border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--glow);
+  color: var(--night);
+  font: 800 calc(var(--s) * 0.38)/1 var(--display);
+  letter-spacing: -0.04em;
+  flex: none;
+  position: relative;
+}
+.mono::after { /* sleepy "z" sticker */
+  content: "z";
+  position: absolute; right: -6%; top: -10%;
+  width: 34%; height: 34%; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--mint); color: var(--night);
+  font: 800 calc(var(--s) * 0.2)/1 var(--display);
+  border: 2px solid var(--night);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 22px; border-radius: 999px; border: 1px solid var(--line);
+  background: var(--card); color: var(--cream);
+  font: 700 15px/1 var(--body); text-decoration: none; cursor: pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+.btn:hover { transform: translateY(-2px); border-color: rgba(247,239,227,.3); }
+.btn-hot { background: var(--glow); color: var(--night); border-color: transparent; }
+.btn-ghost { background: transparent; }
+
+/* Brand icons (Simple Icons, CC0) drawn with currentColor */
+.ico { width: 20px; height: 20px; flex: none; background: currentColor; display: inline-block;
+  -webkit-mask: center / contain no-repeat; mask: center / contain no-repeat; }
+.i-youtube   { -webkit-mask-image: url(../icons/youtube.svg);   mask-image: url(../icons/youtube.svg); }
+.i-twitch    { -webkit-mask-image: url(../icons/twitch.svg);    mask-image: url(../icons/twitch.svg); }
+.i-discord   { -webkit-mask-image: url(../icons/discord.svg);   mask-image: url(../icons/discord.svg); }
+.i-tiktok    { -webkit-mask-image: url(../icons/tiktok.svg);    mask-image: url(../icons/tiktok.svg); }
+.i-instagram { -webkit-mask-image: url(../icons/instagram.svg); mask-image: url(../icons/instagram.svg); }
+.i-patreon   { -webkit-mask-image: url(../icons/patreon.svg);   mask-image: url(../icons/patreon.svg); }
+.i-spotify   { -webkit-mask-image: url(../icons/spotify.svg);   mask-image: url(../icons/spotify.svg); }
+
+/* Live pill */
+.live {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(111, 240, 196, 0.12); color: var(--mint);
+  font: 700 12px/1 var(--body); letter-spacing: .08em; text-transform: uppercase;
+}
+.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--mint); animation: pulse 1.6s infinite; }
+@keyframes pulse { 50% { opacity: .3; } }
+
+/* Concept bar: tells the client this is a preview */
+.concept-bar {
+  background: var(--cream); color: var(--night);
+  font: 600 13px/1.4 var(--body);
+  text-align: center; padding: 8px 16px;
+}
+.concept-bar a { font-weight: 800; }
+
+/* Footer credit */
+.credit { padding: 28px 16px 36px; text-align: center; color: var(--muted); font-size: 13px; }
+.credit a { color: var(--cream); font-weight: 700; }
+
+/* Social row */
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.socials a {
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--card); border: 1px solid var(--line); color: var(--cream);
+  transition: background .15s, color .15s, transform .15s;
+}
+.socials a:hover { background: var(--cream); color: var(--night); transform: translateY(-2px); }
+
+/* Thumbnail placeholder art (stands in for real video/cover images) */
+.thumb {
+  aspect-ratio: 16 / 9; border-radius: 14px; position: relative; overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(255,138,61,.55), transparent 55%),
+    radial-gradient(120% 90% at 100% 100%, rgba(182,156,255,.55), transparent 55%),
+    var(--card-2);
+}
+.thumb.alt { background:
+    radial-gradient(120% 90% at 100% 0%, rgba(255,111,174,.55), transparent 55%),
+    radial-gradient(120% 90% at 0% 100%, rgba(111,240,196,.4), transparent 55%),
+    var(--card-2); }
+.thumb.cover { aspect-ratio: 1; }
+.thumb .play {
+  position: absolute; inset: 0; margin: auto; width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(18,15,28,.65); display: grid; place-items: center;
+}
+.thumb .play::before { content: ""; border-left: 16px solid var(--cream); border-block: 10px solid transparent; margin-left: 4px; }
+.thumb .tag {
+  position: absolute; left: 10px; bottom: 10px; padding: 4px 9px; border-radius: 6px;
+  background: rgba(18,15,28,.75); font: 700 11px/1.2 var(--body); letter-spacing: .06em; text-transform: uppercase;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
